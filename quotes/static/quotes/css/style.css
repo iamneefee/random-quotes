@@ -1,0 +1,47 @@
+body {
+    background-color: #f9fafb;
+}
+
+.navbar {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.nav-link {
+    border-radius: 10px;
+}
+
+.nav-link:hover {
+    background-color: #f6f7fa;
+}
+
+.nav-link.active {
+    background-color: #f3f4f6;
+}
+
+.card {
+    border-radius: 20px;
+    border: 1px solid #e5e7eb;
+}
+
+.quote-text {
+    font-size: 30px;
+} 
+
+.btn {
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: #111827;
+    border-color: #111827;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary.active {
+    background-color: #1f2937 !important;
+    border-color: #1f2937 !important;
+}
