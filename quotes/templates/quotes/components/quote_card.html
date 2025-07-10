@@ -1,4 +1,4 @@
-<div class="card shadow-sm mb-4">
+<div class="card shadow-sm mb-4" hx-target="this" hx-swap="outerHTML">
     <div class="card-body">
         <blockquote>
             <p class="quote-text">{{ quote.text }}</p>
@@ -20,7 +20,7 @@
                 </span>
             </div>
 
-            <form method="post">
+            <form hx-post="{% url 'quotes:rate-quote' %}" hx-trigger="submit">
                 {% csrf_token %}
                 <input type="hidden" name="quote_id" value="{{ quote.id }}">
 
