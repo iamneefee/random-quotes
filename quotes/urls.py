@@ -1,0 +1,8 @@
+from django.urls import path
+from quotes import views
+
+app_name = 'quotes'
+
+urlpatterns = [
+    path('', views.random_quote, name='random-quote'),
+]
