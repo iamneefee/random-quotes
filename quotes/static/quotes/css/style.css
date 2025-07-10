@@ -26,7 +26,15 @@ body {
 
 .quote-text {
     font-size: 30px;
-} 
+}
+
+.quote-text::before {
+    content: "«";
+}
+
+.quote-text::after {
+    content: "»";
+}
 
 .btn {
     border-radius: 10px;
