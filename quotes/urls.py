@@ -1,10 +1,11 @@
 from django.urls import path
-from quotes import views
+from .views.random_quote import random_quote_view, rate_quote_view
+from .views.dashboard import dashboard_view
 
 app_name = 'quotes'
 
 urlpatterns = [
-    path('', views.random_quote, name='random-quote'),
-    path('rate/', views.rate_quote, name='rate-quote'),
-    path('dashboard/', views.dashboard, name='dashboard'),
+    path('', random_quote_view, name='random-quote'),
+    path('rate/', rate_quote_view, name='rate-quote'),
+    path('dashboard/', dashboard_view, name='dashboard'),
 ]
