@@ -1,33 +1,37 @@
-<div class="table-responsive">
-    <table class="table table-hover align-middle">
-        <thead class="table-light">
-            <tr>
-                <th>Цитата</th>
-                <th>Источник</th>
-                <th class="text-center">Лайки</th>
-                <th class="text-center">Дизлайки</th>
-                <th class="text-center">Просмотры</th>
-                <th class="text-center">Вес</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for quote in items %}
+{% if items %}
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
                 <tr>
-                    <td>{{ quote.text|truncatechars:20 }}</td>
-                    <td>
-                        <div>
-                            <strong>{{ quote.source.name }}</strong>
-                            {% if quote.source.author %}
-                                <div class="text-muted small">{{ quote.source.author }}</div>
-                            {% endif %}
-                        </div>
-                    </td>
-                    <td class="text-center text-success">{{ quote.likes }}</td>
-                    <td class="text-center text-danger">{{ quote.dislikes }}</td>
-                    <td class="text-center">{{ quote.views }}</td>
-                    <td class="text-center">{{ quote.weight }}</td>
+                    <th>Цитата</th>
+                    <th>Источник</th>
+                    <th class="text-center">Лайки</th>
+                    <th class="text-center">Дизлайки</th>
+                    <th class="text-center">Просмотры</th>
+                    <th class="text-center">Вес</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                {% for quote in items %}
+                    <tr>
+                        <td>{{ quote.text|truncatechars:20 }}</td>
+                        <td>
+                            <div>
+                                <strong>{{ quote.source.name }}</strong>
+                                {% if quote.source.author %}
+                                    <div class="text-muted small">{{ quote.source.author }}</div>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td class="text-center text-success">{{ quote.likes }}</td>
+                        <td class="text-center text-danger">{{ quote.dislikes }}</td>
+                        <td class="text-center">{{ quote.views }}</td>
+                        <td class="text-center">{{ quote.weight }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    {% include 'quotes/components/no_table.html' %}
+{% endif %}
