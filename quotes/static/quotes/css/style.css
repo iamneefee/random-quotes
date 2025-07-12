@@ -11,6 +11,10 @@ body {
     border-radius: 10px;
 }
 
+.nav-tabs .nav-link {
+    border-radius: 10px 10px 0 0;
+}
+
 .nav-link:hover {
     background-color: #f6f7fa;
 }

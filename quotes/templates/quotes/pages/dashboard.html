@@ -1,0 +1,62 @@
+{% extends 'quotes/base.html' %}
+
+{% block title %}Цитаты | Аналитика{% endblock %}
+
+{% block content %}
+    <div class="row mb-4">
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Цитат' value=total_quotes color='primary' %}
+        </div>
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Источников' value=total_sources color='warning' %}
+        </div>
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Лайки' value=total_likes color='success' %}
+        </div>
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Дизлайки' value=total_dislikes color='danger' %}
+        </div>
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Просмотры' value=total_views color='info' %}
+        </div>
+    </div>
+
+    <ul class="nav nav-tabs mb-4">
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'quotes' %}active{% endif %}"
+               href="?tab=quotes&per_page={{ per_page }}">
+                <i class="bi bi-quote me-1"></i>Топ цитат
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'sources' %}active{% endif %}"
+               href="?tab=sources&per_page={{ per_page }}">
+                <i class="bi bi-book me-1"></i>Топ источников
+            </a>
+        </li>
+    </ul>
+
+    {% if active_tab and items %}
+        <div class="mb-4">
+            <div class="align-items-center">
+                <p class="fw-bold">Отображать на странице</p>
+                <div class="btn-group">
+                    {% for option in per_page_options %}
+                        <a href="?per_page={{ option }}&tab={{ active_tab }}"
+                           class="btn btn-sm btn-outline-primary {% if per_page == option %}active{% endif %}">
+                            {{ option }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if active_tab == 'quotes' %}
+        {% include 'quotes/components/quotes_table.html' %}
+    {% elif active_tab == 'sources' %}
+        {% include 'quotes/components/sources_table.html' %}
+    {% else %}
+        {% include 'quotes/components/no_table.html' %}
+    {% endif %}
+{% endblock %}
