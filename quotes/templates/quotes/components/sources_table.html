@@ -1,0 +1,26 @@
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Источник</th>
+                <th>Автор</th>
+                <th class="text-center">Цитат</th>
+                <th class="text-center">Лайки</th>
+                <th class="text-center">Дизлайки</th>
+                <th class="text-center">Просмотры</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for source in items %}
+                <tr>
+                    <td><strong>{{ source.source__name }}</strong></td>
+                    <td>{{ source.source__author|default:"-" }}</td>
+                    <td class="text-center">{{ source.quote_count }}</td>
+                    <td class="text-center text-success">{{ source.likes }}</td>
+                    <td class="text-center text-danger">{{ source.dislikes }}</td>
+                    <td class="text-center">{{ source.views }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
