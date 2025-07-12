@@ -18,7 +18,9 @@ def get_random_quote():
 
 def random_quote(request):
     quote = get_random_quote()
-    quote.add_view()
+
+    if quote:
+        quote.add_view()
 
     return render(request, 'quotes/pages/random_quote.html', {'quote': quote})
 
