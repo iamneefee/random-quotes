@@ -3,20 +3,20 @@
 {% block title %}Цитаты | Случайная{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-lg-8">
-        {% if quote %}
-            {% include 'quotes/components/quote_card.html' with quote=quote %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            {% if quote %}
+                {% include 'quotes/components/quote_card.html' with quote=quote %}
 
-            <div class="text-center">
-                <a href="{% url 'quotes:random-quote' %}" class="btn btn-primary">
-                    <span class="p-1"><i class="bi bi-shuffle me-2"></i>Другая цитата</span>
-                </a>
-            </div>
-        {% else %}
-            {% include 'quotes/components/no_quotes.html' %}
-        {% endif %}
+                <div class="text-center">
+                    <a href="{% url 'quotes:random-quote' %}" class="btn btn-primary">
+                        <span class="p-1"><i class="bi bi-shuffle me-2"></i>Другая цитата</span>
+                    </a>
+                </div>
+            {% else %}
+                {% include 'quotes/components/no_quotes.html' %}
+            {% endif %}
+        </div>
     </div>
-</div>
 {% endblock %}
 
