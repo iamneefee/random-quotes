@@ -21,6 +21,13 @@ class SourceForm(forms.ModelForm):
 
 
 class QuoteForm(forms.ModelForm):
+    weight = forms.IntegerField(
+        min_value=Quote.MIN_WEIGHT,
+        max_value=Quote.MAX_WEIGHT,
+        widget=forms.NumberInput(
+            attrs={'class': 'form-control', 'placeholder': f'Выберите вес от {Quote.MIN_WEIGHT} до {Quote.MAX_WEIGHT}'})
+    )
+
     class Meta:
         model = Quote
         fields = ['text', 'source', 'weight']
@@ -31,11 +38,6 @@ class QuoteForm(forms.ModelForm):
                 'placeholder': 'Введите текст цитаты'
             }),
             'source': forms.Select(attrs={'class': 'form-select'}),
-            'weight': forms.NumberInput(attrs={
-                'class': 'form-control',
-                'min': Quote.MIN_WEIGHT,
-                'max': Quote.MAX_WEIGHT
-            }),
         }
 
     def __init__(self, *args, **kwargs):
