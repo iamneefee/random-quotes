@@ -16,13 +16,13 @@
             </li>
             <li class="nav-item me-2">
                 <a class="nav-link {% if request.resolver_match.url_name == 'add-quote' %}active{% endif %}"
-                   href="#">
+                   href="{% url 'quotes:add-quote' %}">
                     <span class="p-2"><i class="bi bi-quote me-2"></i>Добавить цитату</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {% if request.resolver_match.url_name == 'add-source' %}active{% endif %}"
-                   href="#">
+                   href="{% url 'quotes:add-source' %}">
                     <span class="p-2"><i class="bi bi-book me-2"></i>Добавить источник</span>
                 </a>
             </li>
