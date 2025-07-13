@@ -58,4 +58,9 @@ def dashboard_view(request):
             'sort_options': sort_options,
         })
 
-    return render(request, 'quotes/pages/dashboard.html', context)
+    if request.headers.get('HX-Request'):
+        template = 'quotes/components/table_controls.html'
+    else:
+        template = 'quotes/pages/dashboard.html'
+
+    return render(request, template, context)

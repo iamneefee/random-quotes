@@ -1,7 +1,5 @@
 {% extends 'quotes/base.html' %}
 
-{% load url_utils %}
-
 {% block title %}Цитаты | Аналитика{% endblock %}
 
 {% block content %}
@@ -23,57 +21,7 @@
         </div>
     </div>
 
-    <ul class="nav nav-tabs mb-4">
-        <li class="nav-item">
-            <a class="nav-link {% if active_tab == 'quotes' %}active{% endif %}"
-               href="?tab=quotes&per_page={{ per_page }}">
-                <i class="bi bi-quote me-1"></i>Топ цитат
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link {% if active_tab == 'sources' %}active{% endif %}"
-               href="?tab=sources&per_page={{ per_page }}">
-                <i class="bi bi-book me-1"></i>Топ источников
-            </a>
-        </li>
-    </ul>
-
-    {% if active_tab and items %}
-        <div class="d-flex justify-content-between mb-5">
-            <div class="d-flex align-items-center">
-                <p class="fw-bold mb-1 me-3">Отображать на странице:</p>
-                <div class="btn-group">
-                    {% for option in per_page_options %}
-                        <a href="?per_page={{ option }}&tab={{ active_tab }}"
-                           class="btn btn-sm btn-outline-secondary {% if per_page == option %}active{% endif %}">
-                            {{ option }}
-                        </a>
-                    {% endfor %}
-                </div>
-            </div>
-
-            <div class="d-flex align-items-center">
-                <p class="fw-bold mb-1 me-3">Сортировка:</p>
-                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button"
-                        id="sortDropdown" data-bs-toggle="dropdown">
-                    <i class="bi bi-sort-down me-1"></i>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="sortDropdown">
-                    {% for value, label in sort_options.items %}
-                        <li>
-                            <a class="dropdown-item" href="{% sort_url active_tab per_page value %}">{{ label }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    {% endif %}
-
-    {% if active_tab == 'quotes' %}
-        {% include 'quotes/components/quotes_table.html' %}
-    {% elif active_tab == 'sources' %}
-        {% include 'quotes/components/sources_table.html' %}
-    {% else %}
-        {% include 'quotes/components/no_table.html' %}
-    {% endif %}
+    <div id="dashboard-content">
+        {% include 'quotes/components/table_controls.html' %}
+    </div>
 {% endblock %}
