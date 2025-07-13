@@ -1,0 +1,9 @@
+### IDE files
+# JetBrains
+.idea/
+
+### Django
+db.sqlite3
+
+### Environment
+.env

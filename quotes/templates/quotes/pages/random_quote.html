@@ -1,0 +1,22 @@
+{% extends 'quotes/base.html' %}
+
+{% block title %}Цитаты | Случайная{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            {% if quote %}
+                <div class="text-center mb-4">
+                    <a href="{% url 'quotes:random-quote' %}" class="btn btn-primary">
+                        <span class="p-1"><i class="bi bi-shuffle me-2"></i>Другая цитата</span>
+                    </a>
+                </div>
+
+                {% include 'quotes/components/quote_card.html' with quote=quote %}
+            {% else %}
+                {% include 'quotes/components/no_quotes.html' %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+

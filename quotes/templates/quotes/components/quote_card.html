@@ -1,0 +1,37 @@
+<div class="card shadow-sm mb-4" hx-target="this" hx-swap="outerHTML">
+    <div class="card-body">
+        <blockquote>
+            <p class="quote-text">{{ quote.text }}</p>
+            <footer>
+                <p>{% if quote.source.author %}{{ quote.source.author }}, {% endif %}{{ quote.source.name }}</p>
+            </footer>
+        </blockquote>
+
+        <div class="d-flex flex-column flex-md-row justify-content-between">
+            <div class="small">
+                <span class="text-muted me-3">
+                    <i class="bi bi-eye"></i> {{ quote.views }}
+                </span>
+                <span class="text-success me-3">
+                    <i class="bi bi-hand-thumbs-up"></i> {{ quote.likes }}
+                </span>
+                <span class="text-danger">
+                    <i class="bi bi-hand-thumbs-down"></i> {{ quote.dislikes }}
+                </span>
+            </div>
+
+            <form hx-post="{% url 'quotes:rate-quote' %}" hx-trigger="submit">
+                {% csrf_token %}
+                <input type="hidden" name="quote_id" value="{{ quote.id }}">
+
+                <button type="submit" name="action" value="like" class="btn btn-sm btn-outline-success me-2">
+                    <span class="p-1"><i class="bi bi-hand-thumbs-up me-2"></i>Нравится</span>
+                </button>
+
+                <button type="submit" name="action" value="dislike" class="btn btn-sm btn-outline-danger">
+                    <span class="p-1"><i class="bi bi-hand-thumbs-down me-2"></i> Не нравится</span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

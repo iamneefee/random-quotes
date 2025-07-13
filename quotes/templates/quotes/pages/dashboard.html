@@ -1,0 +1,27 @@
+{% extends 'quotes/base.html' %}
+
+{% block title %}Цитаты | Аналитика{% endblock %}
+
+{% block content %}
+    <div class="row mb-4">
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Цитат' value=total_quotes color='primary' %}
+        </div>
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Источников' value=total_sources color='warning' %}
+        </div>
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Лайки' value=total_likes color='success' %}
+        </div>
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Дизлайки' value=total_dislikes color='danger' %}
+        </div>
+        <div class="col-md-2 mb-3">
+            {% include 'quotes/components/stat_card.html' with title='Просмотры' value=total_views color='info' %}
+        </div>
+    </div>
+
+    <div id="dashboard-content">
+        {% include 'quotes/components/table_controls.html' %}
+    </div>
+{% endblock %}
