@@ -1,3 +1,4 @@
+from django.http import HttpResponseNotAllowed
 from django.shortcuts import render
 
 from .utils import get_random_quote
@@ -26,3 +27,5 @@ def rate_quote_view(request):
             quote.add_dislike()
 
         return render(request, 'quotes/components/quote_card.html', {'quote': quote})
+
+    return HttpResponseNotAllowed(['POST'])
